@@ -1,0 +1,19 @@
+API CRUD operation
+
+ Create 
+ Read 
+ update
+ Delete
+ 
+  //Read operation     // API GET HttpMethod use 
+  step 1 create API
+    (
+       write one API method to read data from DB & return that data using      OK())
+  step 2 : consume that API in MVC application to read data from DB
+
+
+//1 Teacher
+//   1)display All Teachers information
+     2) show all teachers who teach Maths subject
+     3) show all teachers who belongs to pune
+     4) show teacher whoes empID=34

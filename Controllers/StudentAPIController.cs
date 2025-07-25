@@ -1,0 +1,43 @@
+﻿using OctAPITry.Models;
+using OctAPITry.Models.ModelClasses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Controllers;
+
+namespace OctAPITry.Controllers
+{
+
+    public class StudentAPIController : ApiController
+    {
+        DB_authentication_authorisation_Oct_210725Entities dbo = new DB_authentication_authorisation_Oct_210725Entities();
+
+        //API to read all student information
+
+        [HttpGet]
+        public IHttpActionResult getAllStudent()
+        {
+            List<tblStudent> studList = dbo.tblStudents.ToList();
+            List<Student> sList = studList.Select(x => new Student() { id = x.id, Name = x.Name, roll = x.roll, TotalMarks = x.TotalMarks }).ToList();
+
+            return Ok(sList);
+        }
+        [HttpGet]
+        public IHttpActionResult getStudByRoll(int roll)
+        {
+            var std = dbo.tblStudents.FirstOrDefault(x => x.roll == roll);
+            if (std == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(std);
+            }
+        }
+
+    }
+}

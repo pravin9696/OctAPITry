@@ -1,0 +1,20 @@
+﻿@model OctAPITry.Models.tblStudent
+@{
+    ViewBag.Title = "SearchStudent";
+}
+
+
+<h2>SearchStudent</h2>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Enter Roll Number</td>
+            <td>@Html.TextBoxFor(x => x.roll)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Search" /></td>
+            
+        </tr>
+    </table>
+}

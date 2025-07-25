@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce4c7b9860cd4ad5bb2da6af15c84c55" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_authentication_authorisation_Oct_210725Model.tblLogin" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_authentication_authorisation_Oct_210725Model.tblRole" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_authentication_authorisation_Oct_210725Model.FK_tblRoles_tblLogin" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_authentication_authorisation_Oct_210725Model.tblStudent" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
