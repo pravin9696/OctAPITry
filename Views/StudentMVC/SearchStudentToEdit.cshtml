@@ -1,10 +1,12 @@
 ﻿@model OctAPITry.Models.tblStudent
 @{
-    ViewBag.Title = "SearchStudent";
+    ViewBag.Title = "SearchStudentToEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>SearchStudentToEdit</h2>
 
-<h2>SearchStudent</h2>
+
 @using (Html.BeginForm())
 {
     <table>
@@ -13,8 +15,9 @@
             <td>@Html.TextBoxFor(x => x.roll)</td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit"  value="ShowDetails" name="btnSubmit" />  <input type="submit" value="Edit" name="btnSubmit" /></td>
-            
+            <td colspan="2"><input type="submit" value="Search" /></td>
+
         </tr>
     </table>
 }
+

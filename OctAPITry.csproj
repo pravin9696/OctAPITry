@@ -179,6 +179,10 @@
     <Content Include="Views\StudentMVC\GetStudents.cshtml" />
     <Content Include="Views\StudentMVC\SearchStudent.cshtml" />
     <Content Include="Views\StudentMVC\showStudent.cshtml" />
+    <Content Include="Views\StudentMVC\InsertStudent.cshtml" />
+    <Content Include="Views\StudentMVC\Index.cshtml" />
+    <Content Include="Views\StudentMVC\SearchStudentToEdit.cshtml" />
+    <Content Include="Views\StudentMVC\updateStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

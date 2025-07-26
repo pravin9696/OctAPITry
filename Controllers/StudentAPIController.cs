@@ -26,18 +26,55 @@ namespace OctAPITry.Controllers
             return Ok(sList);
         }
         [HttpGet]
-        public IHttpActionResult getStudByRoll(int roll)
+            public IHttpActionResult getStudByRoll(int roll)
+            {
+                var std = dbo.tblStudents.FirstOrDefault(x => x.roll == roll);
+                if (std == null)
+                {
+                    return NotFound();
+                }
+                else
+            {
+                return Ok(std);
+            }
+        }
+        [HttpPost]
+        public IHttpActionResult  insertStudent(tblStudent std)
         {
-            var std = dbo.tblStudents.FirstOrDefault(x => x.roll == roll);
-            if (std == null)
+            dbo.tblStudents.Add(std);
+            int n = dbo.SaveChanges();
+            if (n>0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return InternalServerError();
+            }
+        }
+        [HttpPut]
+        public IHttpActionResult updateStudent(tblStudent std)
+        {
+            var stud = dbo.tblStudents.FirstOrDefault(x => x.id == std.id);
+            if (stud==null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(std);
+                stud.roll = std.roll;
+                stud.Name = std.Name;
+                stud.TotalMarks = std.TotalMarks;
+                int n = dbo.SaveChanges();
+                if (n>0)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return InternalServerError();
+                }
             }
         }
-
     }
 }
