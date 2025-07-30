@@ -161,5 +161,85 @@ namespace OctAPITry.Controllers
             return RedirectToAction("updateStudent", std);
 
         }
+        [HttpGet]
+        public ActionResult DeleteStudent()
+        {
+            if (TempData["msg"]!=null)
+            {
+                ViewBag.msg = TempData["msg"].ToString();
+            }
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DeleteStudent(tblStudent std)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44321/api/StudentAPI");
+            var response = client.DeleteAsync("StudentAPI?id="+std.id);
+            response.Wait();
+            var test = response.Result;
+            if (test.IsSuccessStatusCode)
+            {
+                ViewBag.msg = "Record Deleted Successfully";
+            }
+            else if(test.StatusCode==System.Net.HttpStatusCode.NotFound)
+            {
+                ViewBag.msg = "Record not found!!";
+            }
+            else
+            {
+                ViewBag.msg = "Record not deleted!!";
+            }
+
+
+
+                return View();
+        }
+        [HttpPost]
+        public ActionResult ConfirmDelete(tblStudent std)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress=new Uri("https://localhost:44321/api/StudentAPI");
+            var response = client.GetAsync("StudentAPI?id=" + std.id);
+            response.Wait();
+            var test = response.Result;
+
+            if (test.IsSuccessStatusCode)
+            {
+                var display = test.Content.ReadAsAsync<tblStudent>();
+                display.Wait();
+                std = display.Result;
+                return View(std);
+            }
+            TempData["msg"] = "Record not Found!!!";
+            return RedirectToAction("DeleteStudent");
+               
+        }
+        [HttpGet]
+        public ActionResult ConfirmDeleteGet(int id)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44321/api/StudentAPI");
+            var response = client.DeleteAsync("StudentAPI?id=" + id);
+            response.Wait();
+            var test = response.Result;
+            if (test.IsSuccessStatusCode)
+            {
+                TempData["msg"] = "Record Deleted Successfully";
+            }
+            else if (test.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                TempData["msg"] = "Record not found!!";
+            }
+            else
+            {
+                TempData["msg"] = "Record not deleted!!";
+            }
+
+
+
+            return RedirectToAction("DeleteStudent");
+        }
     }
 }

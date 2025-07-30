@@ -1,0 +1,43 @@
+﻿@model OctAPITry.Models.tblStudent
+
+@{
+    ViewBag.Title = "ConfirmDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ConfirmDelete</h2>
+
+<div>
+    <h4>tblStudent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.roll)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roll)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalMarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalMarks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Confirm Delete", "ConfirmDeleteGet", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

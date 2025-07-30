@@ -3,6 +3,7 @@ using OctAPITry.Models.ModelClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -37,6 +38,16 @@ namespace OctAPITry.Controllers
             {
                 return Ok(std);
             }
+        }
+        [HttpGet]
+        public IHttpActionResult getStudentById(int id)
+        {
+            var stud = dbo.tblStudents.Find(id);
+            if (stud!=null)
+            {
+                return Ok(stud);
+            }
+            return NotFound();
         }
         [HttpPost]
         public IHttpActionResult  insertStudent(tblStudent std)
@@ -74,6 +85,34 @@ namespace OctAPITry.Controllers
                 {
                     return InternalServerError();
                 }
+            }
+        }
+        [HttpDelete]
+        public IHttpActionResult DeleteStudById(int id)
+        {
+            var dbo = new DB_authentication_authorisation_Oct_210725Entities();
+            var stud = dbo.tblStudents.FirstOrDefault(x => x.id == id);
+            if (stud != null)
+            {
+                dbo.tblStudents.Remove(stud);
+                try
+                {
+                    int n = dbo.SaveChanges();
+                    if (n > 0)
+                    {
+                        return Ok();
+                    }
+                }
+                 catch (Exception e)
+                {
+
+                    return BadRequest();
+                }
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
             }
         }
     }

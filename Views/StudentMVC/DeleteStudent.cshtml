@@ -1,0 +1,23 @@
+﻿@model OctAPITry.Models.tblStudent
+@{
+    ViewBag.Title = "DeleteStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Record</h2>
+<h3>@ViewBag.msg</h3>
+@using (Html.BeginForm("ConfirmDelete","StudentMVC",FormMethod.Post))
+{
+    
+<table>
+    <tr>
+        <td>Enter Student ID</td>
+        <td>@Html.TextBoxFor(x => x.id)</td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Delete" /></td>
+        <td><input type="reset" value="Reset" /></td>
+    </tr>
+</table>
+}
+
